@@ -23,21 +23,15 @@ public class SalasEstudioApplication implements CommandLineRunner {
         System.out.println("Número de salas de estudio: " + numSalas);
         System.out.println("");
 
-        if (numSalas == 0) {
-            // No hay salas, crea una nueva
-            // Crear Sala de estudio
-            SalaEstudio salaEstudio = new SalaEstudio(50);
-            // Guardar            
-            salaEstudioRepository.save(salaEstudio);
-            System.out.println("Sala guardada en base de datos");
-        } else {
-            System.out.println("Ya existe una sala de estudio, no se creó una nueva.");
-        }
+        /*SalaEstudio salaEstudio = new SalaEstudio(50);
+        // Guardar            
+        salaEstudioRepository.save(salaEstudio);
+        System.out.println("Sala guardada en base de datos");
 
         System.out.println("");
         numSalas = (int) salaEstudioRepository.count();
         System.out.println("Número de salas de estudio: " + numSalas);
-        System.out.println("");
+        System.out.println("");*/
 
         List<SalaEstudio> aforoActual = salaEstudioRepository.findAll();
 

@@ -6,20 +6,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import org.springframework.boot.SpringApplication;
 
-public class SalaEstudioUI extends JFrame {
+public class Sala_2 extends JFrame {
 
-    
-    private SalaEstudioRepository salaEstudioRepository;
+    private ModeloSalaEstudio modeloSalaEstudio;
+    //private SalaEstudioRepository salaEstudioRepository;
     private JLabel labelAforo;
 
-    public SalaEstudioUI(SalaEstudioRepository salaEstudioRepository) {
-        this.salaEstudioRepository = salaEstudioRepository;
+    public Sala_2(SalaEstudioRepository salaEstudioRepository) {
+        this.modeloSalaEstudio = new ModeloSalaEstudio(salaEstudioRepository);
+        //this.salaEstudioRepository = salaEstudioRepository;       
         initComponents();
         setLocationRelativeTo(null); // Centrar la ventana en la pantalla
     }
 
     private void initComponents() {
-        setTitle("Control de accesos sala");
+        setTitle("Control de accesos SALA 2");
         setSize(500, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
@@ -35,34 +36,16 @@ public class SalaEstudioUI extends JFrame {
         aumentarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                aumentarAforo();
+                modeloSalaEstudio.aumentarAforo(2);
             }
         });
 
         disminuirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                disminuirAforo();
+                modeloSalaEstudio.disminuirAforo(2);
             }
         });
-    }
-
-    private void aumentarAforo() {
-        // Incrementar el aforo y actualizar la etiqueta
-        salaEstudioRepository.findAll().forEach(salaEstudio -> {
-            salaEstudio.setAforoActual(salaEstudio.getAforoActual() + 1);
-            salaEstudioRepository.save(salaEstudio);
-        });
-
-    }
-
-    private void disminuirAforo() {
-        // Disminuir el aforo y actualizar la etiqueta
-        salaEstudioRepository.findAll().forEach(salaEstudio -> {
-            salaEstudio.setAforoActual(salaEstudio.getAforoActual() - 1);
-            salaEstudioRepository.save(salaEstudio);
-        });
-
     }
 
     public static void main(String[] args) {
@@ -70,11 +53,12 @@ public class SalaEstudioUI extends JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                // Asegúrate de que SalaEstudioRepository haya sido inyectado en SalasEstudioApplication antes de crear SalaEstudioUI
+                // Asegúrate de que SalaEstudioRepository haya sido inyectado en SalasEstudioApplication antes de crear Sala_1
                 SalaEstudioRepository salaEstudioRepository = SpringApplication.run(SalasEstudioApplication.class, args)
                         .getBean(SalaEstudioRepository.class);
-                new SalaEstudioUI(salaEstudioRepository).setVisible(true);
+                new Sala_2(salaEstudioRepository).setVisible(true);
             }
         });
     }
 }
+
