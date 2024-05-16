@@ -1,7 +1,8 @@
-package principal;
+package principal.data;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import principal.modelo.SalaEstudio;
 
 @Repository
 public class ModeloSalaEstudio {
@@ -31,33 +32,4 @@ public class ModeloSalaEstudio {
         }
     }
 
-    /*public void aumentarAforo() {
-        // Incrementar el aforo y actualizar la etiqueta
-        salaEstudioRepository.findAll().forEach(salaEstudio -> {
-            salaEstudio.setAforoActual(salaEstudio.getAforoActual() + 1);
-            salaEstudioRepository.save(salaEstudio);
-        });
-
-    }
-
-    public void disminuirAforo() {
-        // Disminuir el aforo y actualizar la etiqueta
-        salaEstudioRepository.findAll().forEach(salaEstudio -> {
-            salaEstudio.setAforoActual(salaEstudio.getAforoActual() - 1);
-            salaEstudioRepository.save(salaEstudio);
-        });
-
-    }
-
-    public void eliminarAforo(SalaEstudio s) {
-        int aforoActual = s.getAforoActual();
-        s.setAforoActual(aforoActual - 1);
-        salaEstudioRepository.save(s);
-    }
-
-    public void aumentarAforo(SalaEstudio s) {
-        int aforoActual = s.getAforoActual();
-        s.setAforoActual(aforoActual + 1);
-        salaEstudioRepository.save(s);
-    }*/
 }

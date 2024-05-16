@@ -1,4 +1,4 @@
-package principal;
+package principal.modelo;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;

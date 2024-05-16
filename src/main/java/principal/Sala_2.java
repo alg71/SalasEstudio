@@ -1,5 +1,7 @@
 package principal;
 
+import principal.data.SalaEstudioRepository;
+import principal.data.ModeloSalaEstudio;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,13 +10,11 @@ import org.springframework.boot.SpringApplication;
 
 public class Sala_2 extends JFrame {
 
-    private ModeloSalaEstudio modeloSalaEstudio;
-    //private SalaEstudioRepository salaEstudioRepository;
+    private ModeloSalaEstudio modeloSalaEstudio;    
     private JLabel labelAforo;
 
     public Sala_2(SalaEstudioRepository salaEstudioRepository) {
-        this.modeloSalaEstudio = new ModeloSalaEstudio(salaEstudioRepository);
-        //this.salaEstudioRepository = salaEstudioRepository;       
+        this.modeloSalaEstudio = new ModeloSalaEstudio(salaEstudioRepository);             
         initComponents();
         setLocationRelativeTo(null); // Centrar la ventana en la pantalla
     }
@@ -53,7 +53,7 @@ public class Sala_2 extends JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                // Asegúrate de que SalaEstudioRepository haya sido inyectado en SalasEstudioApplication antes de crear Sala_1
+                
                 SalaEstudioRepository salaEstudioRepository = SpringApplication.run(SalasEstudioApplication.class, args)
                         .getBean(SalaEstudioRepository.class);
                 new Sala_2(salaEstudioRepository).setVisible(true);

@@ -1,3 +1,4 @@
+
 package principal;
 
 import principal.data.SalaEstudioRepository;
@@ -8,19 +9,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import org.springframework.boot.SpringApplication;
 
-public class Sala_1 extends JFrame {
+public class Sala_3 extends JFrame {
 
     private ModeloSalaEstudio modeloSalaEstudio;    
     private JLabel labelAforo;
 
-    public Sala_1(SalaEstudioRepository salaEstudioRepository) {
+    public Sala_3(SalaEstudioRepository salaEstudioRepository) {
         this.modeloSalaEstudio = new ModeloSalaEstudio(salaEstudioRepository);              
         initComponents();
         setLocationRelativeTo(null); // Centrar la ventana en la pantalla
     }
 
     private void initComponents() {
-        setTitle("Control de accesos SALA 1");
+        setTitle("Control de accesos SALA 3");
         setSize(500, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
@@ -36,14 +37,14 @@ public class Sala_1 extends JFrame {
         aumentarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                modeloSalaEstudio.aumentarAforo(1);
+                modeloSalaEstudio.aumentarAforo(3);
             }
         });
 
         disminuirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                modeloSalaEstudio.disminuirAforo(1);
+                modeloSalaEstudio.disminuirAforo(3);
             }
         });
     }
@@ -56,7 +57,7 @@ public class Sala_1 extends JFrame {
                 
                 SalaEstudioRepository salaEstudioRepository = SpringApplication.run(SalasEstudioApplication.class, args)
                         .getBean(SalaEstudioRepository.class);
-                new Sala_1(salaEstudioRepository).setVisible(true);
+                new Sala_3(salaEstudioRepository).setVisible(true);
             }
         });
     }

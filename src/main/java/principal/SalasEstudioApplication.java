@@ -1,5 +1,7 @@
 package principal;
 
+import principal.modelo.SalaEstudio;
+import principal.data.SalaEstudioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -22,24 +24,23 @@ public class SalasEstudioApplication implements CommandLineRunner {
         int numSalas = (int) salaEstudioRepository.count();
         System.out.println("Número de salas de estudio: " + numSalas);
         System.out.println("");
-
-        /*SalaEstudio salaEstudio = new SalaEstudio(50);
+        /*
+        
+        Las salas se crean manualmente en la base de datos ya que solo se trata de una suimulación.
+        También podrían crearse de la siguiente manera comentada:
+        
+        SalaEstudio salaEstudio = new SalaEstudio(50);
         // Guardar            
         salaEstudioRepository.save(salaEstudio);
         System.out.println("Sala guardada en base de datos");
 
-        System.out.println("");
-        numSalas = (int) salaEstudioRepository.count();
-        System.out.println("Número de salas de estudio: " + numSalas);
-        System.out.println("");*/
-
         List<SalaEstudio> aforoActual = salaEstudioRepository.findAll();
 
-        for (Object salaEstudio1 : aforoActual) {
-            System.out.println(salaEstudio1);
+        for (SalaEstudio salaEstudio : aforoActual) {
+            System.out.println(salaEstudio);
         }
 
         System.out.println("");
 
     }
-}
+                   }
